@@ -15,3 +15,4 @@ You have been provided the code for a restaurant reviews website. The code has a
 + add Mapbox token and remove no longer relevant code for google maps
 + format html files
 + add meta viewport tag and html language
++ fix headers heierachy
