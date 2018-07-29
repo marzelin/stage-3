@@ -13,4 +13,5 @@ You have been provided the code for a restaurant reviews website. The code has a
 ### Changes I've made:
 
 + add Mapbox token and remove no longer relevant code for google maps
++ format html files
 
