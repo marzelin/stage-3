@@ -1,3 +1,6 @@
+import imagesUrls from "../img/*.*";
+import restaurantDataUrl from "../data/restaurants.data";
+
 /**
  * Common database helper functions.
  */
@@ -8,8 +11,9 @@ class DBHelper {
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-    const port = 8000 // Change this to your server port
-    return `http://localhost:${port}/data/restaurants.json`;
+    // const port = 8000 // Change this to your server port
+    // return `http://localhost:${port}/data/restaurants.json`;
+    return restaurantDataUrl;
   }
 
   /**
@@ -150,7 +154,9 @@ class DBHelper {
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
-    return (`/img/${restaurant.photograph}`);
+    const [name, extension] = restaurant.photograph.split(".");
+    const imageUrl = imagesUrls[name][extension];
+    return imageUrl;
   }
 
   /**
@@ -163,7 +169,7 @@ class DBHelper {
       alt: restaurant.name,
       url: DBHelper.urlForRestaurant(restaurant)
       })
-      marker.addTo(newMap);
+      marker.addTo(map);
     return marker;
   } 
   /* static mapMarkerForRestaurant(restaurant, map) {
@@ -179,3 +185,4 @@ class DBHelper {
 
 }
 
+export default DBHelper;

@@ -2,6 +2,12 @@
 ---
 #### _Three Stage Course Material Project - Restaurant Reviews_
 
+# How to run the project:
+### development version:
+run `npm run start` and go to <a href="http://localhost:1234/index.html">http://localhost:1234/index.html</a>
+### production version:
+run `npm run serve` and go to <a href="http://localhost:8000">http://localhost:8000</a>
+
 ## Project Overview: Stage 1
 
 For the **Restaurant Reviews** projects, you will incrementally convert a static webpage to a mobile-ready web application. In **Stage One**, you will take a static design that lacks accessibility and convert the design to be responsive on different sized displays and accessible for screen reader use. You will also add a service worker to begin the process of creating a seamless offline experience for your users.
@@ -15,4 +21,5 @@ You have been provided the code for a restaurant reviews website. The code has a
 + add Mapbox token and remove no longer relevant code for google maps
 + format html files
 + add meta viewport tag and html language
-+ fix headers heierachy
++ fix headers hierarchy
++ add parcel bundler

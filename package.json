@@ -1,0 +1,25 @@
+{
+  "name": "mws-restaurant",
+  "version": "1.0.0",
+  "description": "Three Stage Course Material Project - Restaurant Reviews",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marzelin/mws-restaurant.git"
+  },
+  "scripts": {
+    "start": "parcel index.html restaurant.html",
+    "build": "parcel build index.html restaurant.html",
+    "serve": "npm run build && cd dist && python3 -m http.server"
+  },
+  "keywords": [],
+  "author": "marzelin@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marzelin/mws-restaurant/issues"
+  },
+  "homepage": "https://github.com/marzelin/mws-restaurant#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.9.7"
+  }
+}
