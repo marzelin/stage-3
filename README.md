@@ -23,3 +23,4 @@ You have been provided the code for a restaurant reviews website. The code has a
 + add meta viewport tag and html language
 + fix headers hierarchy
 + add parcel bundler
++ changed leaflet to be a local dependency

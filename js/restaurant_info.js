@@ -1,3 +1,4 @@
+import leaflet from "leaflet";
 import DBHelper from "./dbhelper";
 let newMap;
 
@@ -16,12 +17,12 @@ const initMap = () => {
     if (error) { // Got an error!
       console.error(error);
     } else {      
-      newMap = L.map('map', {
+      newMap = leaflet.map('map', {
         center: [restaurant.latlng.lat, restaurant.latlng.lng],
         zoom: 16,
         scrollWheelZoom: false
       });
-      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
+      leaflet.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
         mapboxToken: 'pk.eyJ1IjoibWFyemVsaW4iLCJhIjoiY2prMmc3YjB4MHBxYTNxbXF1dXgzZ3J2MCJ9.qP9LUWOJx6AN9w5_JB6MuA',
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +

@@ -1,5 +1,8 @@
+import leaflet from "leaflet";
+import markerIcon from "./marker-icon";
+
 import imagesUrls from "../img/*.*";
-import restaurantDataUrl from "../data/restaurants.data";
+import restaurantDataUrl from "~/data/restaurants.data";
 
 /**
  * Common database helper functions.
@@ -164,10 +167,11 @@ class DBHelper {
    */
    static mapMarkerForRestaurant(restaurant, map) {
     // https://leafletjs.com/reference-1.3.0.html#marker  
-    const marker = new L.marker([restaurant.latlng.lat, restaurant.latlng.lng],
+    const marker = new leaflet.marker([restaurant.latlng.lat, restaurant.latlng.lng],
       {title: restaurant.name,
       alt: restaurant.name,
-      url: DBHelper.urlForRestaurant(restaurant)
+      url: DBHelper.urlForRestaurant(restaurant),
+      icon: markerIcon
       })
       marker.addTo(map);
     return marker;

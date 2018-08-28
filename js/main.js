@@ -1,3 +1,4 @@
+import leaflet from "leaflet";
 import DBHelper from "./dbhelper";
 
 let newMap;
@@ -78,12 +79,12 @@ const fillCuisinesHTML = (cuisines = []) => {
  * Initialize leaflet map, called from HTML.
  */
 const initMap = () => {
-  newMap = L.map('map', {
+  newMap = leaflet.map('map', {
         center: [40.722216, -73.987501],
         zoom: 12,
         scrollWheelZoom: false
       });
-  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
+  leaflet.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
     mapboxToken: 'pk.eyJ1IjoibWFyemVsaW4iLCJhIjoiY2prMmc3YjB4MHBxYTNxbXF1dXgzZ3J2MCJ9.qP9LUWOJx6AN9w5_JB6MuA',
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
