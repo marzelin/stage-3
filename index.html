@@ -22,7 +22,7 @@
   </header>
 
   <main class="main">
-    <section class="map-container">
+    <section class="map-container" aria-label="map application" role="application">
       <div id="map" class="map"></div>
     </section>
       <div class="filter-container">
@@ -31,6 +31,7 @@
           class="filter-select"
           id="neighborhoods-select"
           name="neighborhoods"
+          aria-label="select neighborhoods"
         >
           <option value="all">All Neighborhoods</option>
         </select>
@@ -38,6 +39,7 @@
           class="filter-select"
           id="cuisines-select"
           name="cuisines"
+          aria-label="select cuisines"
         >
           <option value="all">All Cuisines</option>
         </select>
