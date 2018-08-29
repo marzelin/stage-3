@@ -1,3 +1,5 @@
+import localforage from "localforage";
+
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(cacheName).then(cache => {
@@ -29,17 +31,36 @@ self.addEventListener("fetch", event => {
     event.request.mode = "no-cors";
   }
 
-  event.respondWith(
-    caches.match(eventRequest).then(response => {
-      return (
-        response ||
-        fetch(event.request).then(fetchResponse => {
-          return caches.open(cacheName).then(cache => {
-            cache.put(event.request, fetchResponse.clone());
-            return fetchResponse;
+  if (requestUrl.port === "1337") {
+    const key = "restaurants";
+    event.respondWith(
+      localforage.getItem(key).then(restaurants => {
+        if (restaurants) {
+          return new Response(JSON.stringify(restaurants));
+        }
+
+        return fetch(requestUrl).then(response => {
+          const responseClone = response.clone();
+          response.json().then(data => {
+            localforage.setItem(key, data);
           });
-        })
-      );
-    })
-  );
+          return responseClone;
+        });
+      })
+    );
+  } else {
+    event.respondWith(
+      caches.match(eventRequest).then(response => {
+        return (
+          response ||
+          fetch(event.request).then(fetchResponse => {
+            return caches.open(cacheName).then(cache => {
+              cache.put(event.request, fetchResponse.clone());
+              return fetchResponse;
+            });
+          })
+        );
+      })
+    );
+  }
 });
