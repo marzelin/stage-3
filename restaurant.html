@@ -47,6 +47,22 @@
     </section>
     
     <section id="reviews-container" class="comments-container">
+      <form id="review-form">
+        <h2>Add Review</h2>
+        <label>
+          name:
+          <input id="review-name" name="name">
+        </label>
+        <label>
+          rating:
+          <input id="review-rating" name="rating" type="number" min="1" max="5">
+        </label>
+        <label>
+          your review:
+          <textarea id="review-text" name="text">
+        </label>
+        <input type="submit" value="submit">
+      </form>
       <ul id="reviews-list" class="comments"></ul>
     </section>
   </main>

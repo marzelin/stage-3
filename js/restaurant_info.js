@@ -8,8 +8,14 @@ let newMap;
  */
 document.addEventListener('DOMContentLoaded', (event) => {  
   initMap();
+  registerListeners();
   registerServiceWorker();
 });
+
+function registerListeners() {
+  document.getElementById("review-form")
+  .addEventListener("submit", addReview);
+}
 
 /**
  * Initialize leaflet map
@@ -185,4 +191,20 @@ const getParameterByName = (name, url) => {
   if (!results[2])
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+function addReview(event) {
+  event.preventDefault();
+  const {name, rating, text} = this;
+  const newReview = {
+    name: name.value,
+    comments: text.value,
+    rating: rating.value,
+    id: getParameterByName('id'),
+    createdAt: Date.now(),
+  };
+  const html = createReviewHTML(Object.assign({}, newReview, {date: "now"}));
+  const ul = document.getElementById('reviews-list');
+  ul.appendChild(html);
+  DBHelper.publishReview(newReview);
 }

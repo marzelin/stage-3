@@ -33,21 +33,31 @@ self.addEventListener("fetch", event => {
 
   if (requestUrl.port === "1337") {
     const key = "restaurants";
-    event.respondWith(
-      localforage.getItem(key).then(restaurants => {
-        if (restaurants) {
-          return new Response(JSON.stringify(restaurants));
-        }
+    if (requestUrl.pathname.startsWith("/restaurants")) {
+      event.respondWith(
+        localforage.getItem(key).then(restaurants => {
+          if (restaurants) {
+            return new Response(JSON.stringify(restaurants));
+          }
 
-        return fetch(requestUrl).then(response => {
-          const responseClone = response.clone();
-          response.json().then(data => {
-            localforage.setItem(key, data);
+          return fetch(requestUrl).then(response => {
+            const responseClone = response.clone();
+            response.json().then(data => {
+              localforage.setItem(key, data);
+            });
+            return responseClone;
           });
-          return responseClone;
-        });
+        })
+      );
+    } else {
+      fetch(eventRequest).then(() => {
+        requestUrl.pathname = "/restaurants";
+        fetch(requestUrl).then(response => response.json())
+        .then(data => {
+          localforage.setItem(key, data);
+        })
       })
-    );
+    }
   } else {
     event.respondWith(
       caches.match(eventRequest).then(response => {

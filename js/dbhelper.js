@@ -19,6 +19,14 @@ class DBHelper {
     const port = 1337 // Change this to your server port
     return `http://localhost:${port}/restaurants`;
   }
+  static get REVIEWS_URL() {
+    const port = 1337 // Change this to your server port
+    return `http://localhost:${port}/reviews`;
+  }
+
+  static publishReview(review) {
+    fetch(DBHelper.REVIEWS_URL, {method: "POST", body: review});
+  }
 
   /**
    * Fetch all restaurants.

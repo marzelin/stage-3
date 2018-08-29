@@ -480,3 +480,19 @@
   line-height: 1.4;
   width: 100%;
 }
+
+#review-form {
+  padding: 20px;
+}
+
+#review-name {
+  width: 100%;
+}
+
+#review-text {
+  width: 100%;
+}
+
+#review-rating {
+  width: 100%;
+}
