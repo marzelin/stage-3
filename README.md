@@ -25,3 +25,4 @@ You have been provided the code for a restaurant reviews website. The code has a
 + add parcel bundler
 + changed leaflet to be a local dependency
 + fix normalize.css (add as a local dependency)
++ add postcss
