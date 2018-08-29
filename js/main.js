@@ -148,28 +148,37 @@ const fillRestaurantsHTML = (restaurants = []) => {
  */
 const createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
+  li.className = 'card';
 
   const image = document.createElement('img');
-  image.className = 'restaurant-img';
+  image.className = 'card-image';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 
+  const textContainer = document.createElement("div");
+  textContainer.className = 'card-textcontainer';
+  li.append(textContainer);
+
   const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
-  li.append(name);
+  name.className = 'card-name';
+  textContainer.append(name);
 
   const neighborhood = document.createElement('p');
   neighborhood.innerHTML = restaurant.neighborhood;
-  li.append(neighborhood);
+  neighborhood.className = 'card-neighborhood';
+  textContainer.append(neighborhood);
 
   const address = document.createElement('p');
   address.innerHTML = restaurant.address;
-  li.append(address);
+  address.className = 'card-address';
+  textContainer.append(address);
 
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
+  more.className = 'card-link';
   more.href = DBHelper.urlForRestaurant(restaurant);
-  li.append(more)
+  textContainer.append(more)
 
   return li
 }

@@ -1,0 +1,135 @@
+/* make nice layout */
+html,
+body {
+  background-color: #f3f3f3;
+  color: #444;
+  font-family: "Lato", serif;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* end of nice layout */
+
+body,
+td,
+th,
+p {
+  color: #333;
+}
+
+body {
+  margin: 0;
+  position: relative;
+}
+
+ul,
+li {
+  color: #333;
+}
+
+a {
+  color: orange;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #3397db;
+  text-decoration: none;
+}
+
+a img {
+  border: none 0 #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 20px;
+}
+
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/* responsive images */
+img {
+  max-width: 100%;
+}
+
+/* ====================== Layout ====================== */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+
+@media (min-width: 1000px) {
+  #breadcrumb {
+    box-sizing: border-box;
+    width: 111.11%; /* 100% + padding (5 / 45) */
+  }
+}
+
+#breadcrumb {
+  background-color: #eee;
+  font-size: 17px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 40px 16px;
+}
+
+/* Display list items side by side */
+#breadcrumb li {
+  display: inline;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+#breadcrumb li + li:before {
+  color: black;
+  content: "/\00a0";
+  padding: 8px;
+}
+
+/* Add a color to all links inside the list */
+#breadcrumb li a {
+  color: #0768ab;
+  text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+#breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}

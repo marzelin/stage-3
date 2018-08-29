@@ -107,6 +107,7 @@ const fillRestaurantHoursHTML = (operatingHours) => {
 const fillReviewsHTML = (reviews) => {
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h2');
+  title.className = 'comments-title';
   title.innerHTML = 'Reviews';
   container.appendChild(title);
 
@@ -128,20 +129,25 @@ const fillReviewsHTML = (reviews) => {
  */
 const createReviewHTML = (review) => {
   const li = document.createElement('li');
+  li.className = 'comment-container';
   const name = document.createElement('p');
+  name.className = 'comment-reviewer';
   name.innerHTML = review.name;
   li.appendChild(name);
 
   const date = document.createElement('p');
+  date.className = 'comment-date';
   date.innerHTML = review.date;
   li.appendChild(date);
 
   const rating = document.createElement('p');
   rating.innerHTML = `Rating: ${review.rating}`;
+  rating.className = 'comment-rating';
   li.appendChild(rating);
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
+  comments.className = 'comment-comments';
   li.appendChild(comments);
 
   return li;
