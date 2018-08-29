@@ -3,6 +3,7 @@
 #### _Three Stage Course Material Project - Restaurant Reviews_
 
 # How to run the project:
+install project dependencies: `npm install`
 ### development version:
 run `npm run start` and go to <a href="http://localhost:1234/index.html">http://localhost:1234/index.html</a>
 ### production version:
@@ -30,3 +31,4 @@ You have been provided the code for a restaurant reviews website. The code has a
 + add aria roles
 + add alt descriptions for images
 + add different image sizes for srcset
++ add service worker

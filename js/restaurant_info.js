@@ -1,5 +1,6 @@
 import leaflet from "leaflet";
 import DBHelper from "./dbhelper";
+import registerServiceWorker from "./register-service-worker";
 let newMap;
 
 /**
@@ -7,6 +8,7 @@ let newMap;
  */
 document.addEventListener('DOMContentLoaded', (event) => {  
   initMap();
+  registerServiceWorker();
 });
 
 /**

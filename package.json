@@ -23,6 +23,7 @@
     "@types/leaflet": "^1.2.10",
     "caniuse-lite": "^1.0.30000880",
     "parcel-bundler": "^1.9.7",
+    "parcel-plugin-wrapper": "^0.1.1",
     "postcss-cssnext": "^3.1.0"
   },
   "dependencies": {

@@ -1,5 +1,6 @@
 import leaflet from "leaflet";
 import DBHelper from "./dbhelper";
+import registerServiceWorker from "./register-service-worker";
 
 let newMap;
 let markers = [];
@@ -13,6 +14,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   updateRestaurants();
   fetchNeighborhoods();
   fetchCuisines();
+  registerServiceWorker();
 });
 
 function attachListeners() {
