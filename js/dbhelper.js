@@ -1,7 +1,10 @@
 import leaflet from "leaflet";
 import markerIcon from "./marker-icon";
 
-import imagesUrls from "../img/*.*";
+import imagesUrls from "../img/*/*.*";
+const imageResolutions = Object.keys(imagesUrls);
+const smallestResolution = imageResolutions.sort((a, b) => a - b)[0];
+
 import restaurantDataUrl from "~/data/restaurants.data";
 
 /**
@@ -158,8 +161,12 @@ class DBHelper {
    */
   static imageUrlForRestaurant(restaurant) {
     const [name, extension] = restaurant.photograph.split(".");
-    const imageUrl = imagesUrls[name][extension];
-    return imageUrl;
+    const srcSet = imageResolutions.map(resolution => {
+      const url = imagesUrls[resolution][name][extension];
+      return `${url} ${resolution}w`;
+    }).join(", ");
+    const src = imagesUrls[smallestResolution][name][extension];
+    return [src, srcSet];
   }
 
   /**

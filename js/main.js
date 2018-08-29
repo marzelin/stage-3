@@ -152,7 +152,14 @@ const createRestaurantHTML = (restaurant) => {
 
   const image = document.createElement('img');
   image.className = 'card-image';
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  const [src, srcset] = DBHelper.imageUrlForRestaurant(restaurant);
+  image.src = src;
+  image.srcset = srcset;
+  image.sizes = `
+    (min-width: 768px) 300px,
+    (min-width: 520px) 450px,
+    (min-width: 400px) calc(100vw - 2 * 35px),
+    calc(100vw - 2 * 10px)`;
   image.alt = restaurant.name;
   li.append(image);
 
