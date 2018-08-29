@@ -32,3 +32,4 @@ You have been provided the code for a restaurant reviews website. The code has a
 + add different image sizes for srcset
 + add service worker
 + cache restaurant data in indexedDB
++ add reviews functionality
