@@ -34,3 +34,4 @@ You have been provided the code for a restaurant reviews website. The code has a
 + cache restaurant data in indexedDB
 + add reviews functionality
 + user can add a restaurant to favorites
++ use webp as the image format

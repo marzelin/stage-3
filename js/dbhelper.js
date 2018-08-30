@@ -231,7 +231,7 @@ class DBHelper {
     if (!restaurant.photograph) {
       return [imagePlaceholder, `${imagePlaceholder} 300w`];
     }
-    const [name, extension = "jpg"] = restaurant.photograph.split(".");
+    const [name, extension = "webp"] = restaurant.photograph.split(".");
     const srcSet = imageResolutions.map(resolution => {
       const url = imagesUrls[resolution][name][extension];
       return `${url} ${resolution}w`;
