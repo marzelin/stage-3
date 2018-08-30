@@ -70,6 +70,9 @@ self.addEventListener("fetch", event => {
     }
     handleAJAXEvent(event, id);
   } else {
+    if (checkURL.hostname.indexOf("mapbox.com") > -1) {
+      return;
+    }
     handleNonAJAXEvent(event, cacheRequest);
   }
 });
