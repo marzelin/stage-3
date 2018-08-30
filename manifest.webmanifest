@@ -4,5 +4,11 @@
     "start_url": ".",
     "display": "standalone",
     "description": "Restaurant Reviews",
-    "theme_color": "#252831"
+    "theme_color": "#252831",
+    "background_color": "#14598A",
+    "icons": [{
+        "src": "./icon.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }]
   }
