@@ -462,13 +462,17 @@ class DBHelper {
     // Push the request into the waiting queue in IDB
     const url = `${DBHelper.DATABASE_REVIEWS_URL}`;
     const method = "POST";
-    DBHelper.updateCachedRestaurantReview(id, bodyObj);
-    DBHelper.addPendingRequestToQueue(url, method, bodyObj);
+    DBHelper.updateCachedRestaurantReview(id, bodyObj)
+    DBHelper.addPendingRequestToQueue(url, method, bodyObj)
     callback(null, null);
   }
 }
 
-window.addEventListener("online", DBHelper.nextPending)
-window.addEventListener("load", DBHelper.nextPending)
+window.addEventListener("online", () => {
+  DBHelper.nextPending();
+})
+window.addEventListener("load", () => {
+  DBHelper.nextPending();
+})
 
 export default DBHelper;
