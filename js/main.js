@@ -180,7 +180,12 @@ const createRestaurantHTML = (restaurant) => {
   textContainer.append(neighborhood);
 
   const isFavorite = document.createElement("button");
-  let isFav = JSON.parse(restaurant["is_favorite"]);
+  let isFav;
+  try {
+   isFav = JSON.parse(restaurant["is_favorite"]);
+  } catch (e) {
+   isFav = restaurant["is_favorite"];
+  }
   isFavorite.textContent = isFav ? "favorite" : "make favorite";
   isFavorite.className = isFav ? "favorite-restaurant" : "";
   isFavorite.addEventListener("click", () => {
