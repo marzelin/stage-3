@@ -179,6 +179,18 @@ const createRestaurantHTML = (restaurant) => {
   neighborhood.className = 'card-neighborhood';
   textContainer.append(neighborhood);
 
+  const isFavorite = document.createElement("button");
+  let isFav = JSON.parse(restaurant["is_favorite"]);
+  isFavorite.textContent = isFav ? "favorite" : "make favorite";
+  isFavorite.className = isFav ? "favorite-restaurant" : "";
+  isFavorite.addEventListener("click", () => {
+    isFav = !isFav;
+    isFavorite.textContent = isFav ? "favorite" : "make favorite";
+    isFavorite.className = isFav ? "favorite-restaurant" : "";
+    DBHelper.updateFavorite(restaurant.id, isFav, () => {})
+  })
+  textContainer.append(isFavorite);
+
   const address = document.createElement('p');
   address.innerHTML = restaurant.address;
   address.className = 'card-address';

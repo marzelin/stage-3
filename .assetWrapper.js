@@ -16,8 +16,8 @@ const addAssetsToSWFile = async ({name, bundler}) => {
     const hashes = assets.map(([_, hash]) => hash).join(":");
     return {
       header: `
-      const assets = ${JSON.stringify(filenames)};
-      const cacheName = "offline-cache";`,
+      var assets = ${JSON.stringify(filenames)};
+      var cacheName = "offline-cache";`,
       footer: `//*invalidator:${hashes}`
     }
   }

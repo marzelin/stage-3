@@ -496,3 +496,7 @@
 #review-rating {
   width: 100%;
 }
+
+.favorite-restaurant {
+  background-color: pink;
+}

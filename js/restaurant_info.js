@@ -92,7 +92,7 @@ const fillRestaurantHTML = (restaurant) => {
     fillRestaurantHoursHTML(restaurant.operating_hours);
   }
   // fill reviews
-  fillReviewsHTML(restaurant.reviews);
+  fillReviewsHTML(restaurant.id);
 }
 
 /**
@@ -118,24 +118,26 @@ const fillRestaurantHoursHTML = (operatingHours) => {
 /**
  * Create all reviews HTML and add them to the webpage.
  */
-const fillReviewsHTML = (reviews) => {
-  const container = document.getElementById('reviews-container');
-  const title = document.createElement('h2');
-  title.className = 'comments-title';
-  title.innerHTML = 'Reviews';
-  container.appendChild(title);
+const fillReviewsHTML = (id) => {
+  DBHelper.fetchRestaurantReviewsById(id, (error, reviews) => {
+    const container = document.getElementById('reviews-container');
+    const title = document.createElement('h2');
+    title.className = 'comments-title';
+    title.innerHTML = 'Reviews';
+    container.appendChild(title);
 
-  if (!reviews) {
-    const noReviews = document.createElement('p');
-    noReviews.innerHTML = 'No reviews yet!';
-    container.appendChild(noReviews);
-    return;
-  }
-  const ul = document.getElementById('reviews-list');
-  reviews.forEach(review => {
-    ul.appendChild(createReviewHTML(review));
-  });
-  container.appendChild(ul);
+    if (!reviews) {
+      const noReviews = document.createElement('p');
+      noReviews.innerHTML = 'No reviews yet!';
+      container.appendChild(noReviews);
+      return;
+    }
+    const ul = document.getElementById('reviews-list');
+    reviews.forEach(review => {
+      ul.appendChild(createReviewHTML(review));
+    });
+    container.appendChild(ul);
+  })
 }
 
 /**
@@ -148,10 +150,11 @@ const createReviewHTML = (review) => {
   name.className = 'comment-reviewer';
   name.innerHTML = review.name;
   li.appendChild(name);
+  const creationDate = new Date(review.createdAt).toLocaleString();
 
   const date = document.createElement('p');
   date.className = 'comment-date';
-  date.innerHTML = review.date;
+  date.innerHTML = creationDate;
   li.appendChild(date);
 
   const rating = document.createElement('p');
@@ -195,16 +198,19 @@ const getParameterByName = (name, url) => {
 
 function addReview(event) {
   event.preventDefault();
+  const id = Number(getParameterByName('id'));
   const {name, rating, text} = this;
   const newReview = {
     name: name.value,
     comments: text.value,
     rating: rating.value,
-    id: getParameterByName('id'),
+    restaurant_id: id,
     createdAt: Date.now(),
   };
   const html = createReviewHTML(Object.assign({}, newReview, {date: "now"}));
   const ul = document.getElementById('reviews-list');
   ul.appendChild(html);
-  DBHelper.publishReview(newReview);
+  DBHelper.publishReview(id, newReview, () => {
+    console.log("update done")
+  });
 }
