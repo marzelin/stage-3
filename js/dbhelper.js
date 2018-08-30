@@ -468,4 +468,7 @@ class DBHelper {
   }
 }
 
+window.addEventListener("online", DBHelper.nextPending)
+window.addEventListener("load", DBHelper.nextPending)
+
 export default DBHelper;
