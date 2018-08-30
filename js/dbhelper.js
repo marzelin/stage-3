@@ -270,17 +270,18 @@ class DBHelper {
             body
           }
         })
+        return tx.complete;
     })
       .catch(error => {
         console.log("trasnastion error")
         console.log(error);
       })
-      .then(DBHelper.nextPending());
+      .then(DBHelper.nextPending);
   }
 
   static nextPending() {
     console.log("next pending")
-    DBHelper.attemptCommitPending(DBHelper.nextPending);
+    return DBHelper.attemptCommitPending(DBHelper.nextPending);
   }
 
   static attemptCommitPending(callback) {
@@ -301,7 +302,6 @@ class DBHelper {
         .objectStore("pending")
         .openCursor()
         .then(cursor => {
-          debugger;
           if (!cursor) {
             console.log("no cursor")
             return;
